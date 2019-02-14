@@ -13,6 +13,7 @@ import * as QueueActions from './actions/queue';
 import * as SettingsActions from './actions/settings';
 import * as ScrobblingActions from './actions/scrobbling';
 
+
 import './app.global.scss';
 import styles from './styles.scss';
 import compact from './compact.scss';
@@ -126,6 +127,7 @@ class App extends React.Component {
           {this.renderNavLink('downloads', 'download', 'Downloads', settings)}
           {this.renderNavLink('playlists', 'music', 'Playlists', settings)}
           {this.renderNavLink('lyrics', 'microphone', 'Lyrics', settings)}
+          {this.renderNavLink('events', 'calendar', 'Events', settings)}
           {this.renderNavLink('plugins', 'flask', 'Plugins', settings)}
           {this.renderNavLink('search', 'search', 'Search Results', settings)}
           {this.renderNavLink('settings', 'cogs', 'Settings', settings)}
@@ -270,8 +272,8 @@ class App extends React.Component {
               <MainContentContainer />
             </VerticalPanel>
             {this.renderRightPanel(settings)}
-            <ToastContainer/>
-            <ShortcutsContainer/>
+            <ToastContainer />
+            <ShortcutsContainer />
           </div>
           {this.renderFooter(settings)}
           <SoundContainer />

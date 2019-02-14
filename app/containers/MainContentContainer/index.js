@@ -16,6 +16,7 @@ import SearchResultsContainer from '../SearchResultsContainer';
 import SettingsContainer from '../SettingsContainer';
 import TagViewContainer from '../TagViewContainer';
 import LyricsContainer from '../LyricsContainer';
+import EventsContainer from '../EventsContainer';
 
 import Downloads from '../../components/Downloads';
 
@@ -45,6 +46,7 @@ class MainContentContainer extends React.Component {
               <Route path='/tag/:tagName' component={TagViewContainer} />
               <Route path='/search' component={SearchResultsContainer} />
               <Route path='/lyrics' component={LyricsContainer} />
+              <Route path='/events' component={EventsContainer} />
             </Switch>
           </MainLayout>
         );

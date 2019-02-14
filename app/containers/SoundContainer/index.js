@@ -9,13 +9,14 @@ import * as PlayerActions from '../../actions/player';
 import * as QueueActions from '../../actions/queue';
 import * as ScrobblingActions from '../../actions/scrobbling';
 import * as LyricsActions from '../../actions/lyrics';
+import * as EventsActions from '../../actions/events';
 import Sound from 'react-sound';
 import { getSelectedStream } from '../../utils';
 import * as Autoradio from './autoradio';
 import globals from '../../globals';
 import core from 'nuclear-core';
 
-let lastfm = new core.LastFmApi(globals.lastfmApiKey, globals.lastfmApiSecret);
+// let lastfm = new core.LastFmApi(globals.lastfmApiKey, globals.lastfmApiSecret);
 
 class SoundContainer extends React.Component {
   handlePlaying (update) {
@@ -31,6 +32,7 @@ class SoundContainer extends React.Component {
 
   handleLoaded () {
     this.handleLoadLyrics();
+    this.handleLoadEvents();
     this.handleAutoRadio();
     this.props.actions.updateStreamLoading(false);
   }
@@ -44,7 +46,15 @@ class SoundContainer extends React.Component {
       this.props.actions.lyricsSearch(currentSong);
     }
   }
-  
+
+  handleLoadEvents () {
+    let currentSong = this.props.queue.queueItems[
+      this.props.queue.currentSong
+    ];
+    this.props.actions.eventsSearch(currentSong.artist);
+
+  }
+
   handleAutoRadio () {
     if (
       this.props.settings.autoradio &&
@@ -87,7 +97,7 @@ class SoundContainer extends React.Component {
     }
   }
 
-  addAutoradioTrackToQueue () {
+  /* addAutoradioTrackToQueue () {
     let currentSong = this.props.queue.queueItems[this.props.queue.currentSong];
     return lastfm
       .getArtistInfo(currentSong.artist)
@@ -130,7 +140,7 @@ class SoundContainer extends React.Component {
       });
       resolve(true);
     });
-  }
+  }*/
 
   shouldComponentUpdate (nextProps) {
     const currentSong = nextProps.queue.queueItems[nextProps.queue.currentSong];
@@ -188,7 +198,8 @@ function mapDispatchToProps (dispatch) {
         PlayerActions,
         QueueActions,
         ScrobblingActions,
-        LyricsActions
+        LyricsActions,
+        EventsActions
       ),
       dispatch
     )

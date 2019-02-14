@@ -1,0 +1,56 @@
+@import '../../vars';
+.events_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items:  flex-start ;
+
+    .month_event_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    }
+
+    .event_container{
+        width: 15em;
+        height:15em;
+        padding: 0em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin: 0.5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: black;
+
+        .date_month{
+            padding-top: 3em;
+            padding-left: 1em;
+            height: 7em;
+            font-size: 2em;
+            color: white;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .date_year{
+            padding: 1em;
+        }
+
+        .event_date {
+            padding: 1em;
+        }
+
+        .event_name {
+            padding: 1em;
+        }
+
+        .event_footer {
+            padding: 1em;
+            background-color: black;
+            color: white;
+        }
+    }
+}
